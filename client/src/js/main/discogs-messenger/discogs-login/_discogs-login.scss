@@ -1,0 +1,17 @@
+.d-login {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #000000;
+  text-align: center;
+
+  &__container {
+    width: 40%;
+    margin: 10% auto;
+  }
+}

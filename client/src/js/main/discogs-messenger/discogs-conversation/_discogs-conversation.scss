@@ -1,0 +1,51 @@
+.d-conversation {
+  min-width: 200px;
+  height: calc(100vh - 50px);
+  position: relative;
+
+  @media screen and (max-width: 860px) {
+    & {
+      height: calc(70vh - 50px);
+    }
+  }
+
+  &__body {
+    &__messages {
+      margin: 0;
+      padding: 10px;
+      list-style: none;
+
+      &__message {
+        padding: 10px;
+        background-color: $middle-bar-color;
+        border-radius: 10px;
+        margin: 5px 10px;
+        float: left;
+        width: 80%;
+
+        &--outbound {
+          background-color: $menu-background;
+          color: #ffffff;
+          float: right;
+        }
+      }
+    }
+  }
+  
+  &__write {
+    padding: 10px 20px;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+
+    &__text {
+      width: calc(100% - 140px);
+      display: inline-block;
+    }
+
+    &__send {
+      width: 120px;
+      vertical-align: bottom;
+    }
+  }
+}

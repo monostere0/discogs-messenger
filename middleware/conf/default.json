@@ -1,0 +1,17 @@
+{
+  "port":8080,
+  "test_port": 8855,
+  "discogs": {
+    "oauth": {
+      "key": "keLYDICLoHEvzWwvieOm",
+      "secret": "qTupYpAoIwaaorJrsYiRjZhPlTVhEPkn",
+      "request_token_url": "https://api.discogs.com/oauth/request_token",
+      "authorize_url": "https://discogs.com/oauth/authorize?oauth_token=",
+      "access_token_url": "https://api.discogs.com/oauth/access_token"
+    },
+    "api_url": "https://api.discogs.com/"
+  },
+  "app_url": "http://localhost:3000/",
+  "oauth_callback_url": "http://localhost:8080/api/auth",
+  "app_user_agent": "Discogs-Messenger/1.0"
+}
