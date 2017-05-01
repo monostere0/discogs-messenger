@@ -2,7 +2,12 @@ const secureRequest = require('./oauth').secureRequest;
 const conf = require('../../../conf')();
 const qs = require('querystring');
 
-module.exports = {getOrders, getOrderMessages, getIdentity};
+module.exports = {
+  getOrders,
+  getOrderMessages,
+  getIdentity,
+  getUserProfile
+};
 
 function getOrders(authToken) {
   return secureRequest({
@@ -15,6 +20,14 @@ function getOrders(authToken) {
 function getOrderMessages(authToken, orderId) {
   return secureRequest({
     url: getApiUrl(`marketplace/orders/${orderId}/messages`),
+    oauth: authToken,
+    json: true
+  });
+}
+
+function getUserProfile(authToken, username) {
+  return secureRequest({
+    url: getApiUrl(`users/${username}`),
     oauth: authToken,
     json: true
   });
