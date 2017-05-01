@@ -8,7 +8,8 @@ function discogsConversation() {
     controller(messagesService, $stateParams) {
       const $ctrl = this;
       $ctrl.$onInit = function() {
-        $ctrl.entries = messagesService.getConversation($stateParams.id);
+        messagesService.getConversation($stateParams.id)
+          .then(entries => $ctrl.entries = entries);
       };
     },
     template: `<div class="d-conversation">

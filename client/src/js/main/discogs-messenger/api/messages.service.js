@@ -10,6 +10,7 @@ function messagesService($http, $q, apiURL, $log) {
     {id:3, from:'blabla', preview:'blabla...',timestamp:(+new Date),avatar:'https://pbs.twimg.com/profile_images/666037217832243200/TvOVC0ns.png'},
     {id:4, from:'blabla', preview:'blabla...',timestamp:(+new Date),avatar:'https://pbs.twimg.com/profile_images/666037217832243200/TvOVC0ns.png'}
   ];
+
   const conversation = [
     {"timestamp": "2015-06-02T13:17:54-07:00",
       "message": "example_buyer received refund of $5.00.",
@@ -58,8 +59,11 @@ function messagesService($http, $q, apiURL, $log) {
       .catch(requestFail);
   }
 
-  function getConversation(messageId) {
-    return conversation.slice(messageId);
+  function getConversation(orderId) {
+    return $http
+      .get(`${apiURL.baseUrl}/messages/${orderId}`)
+      .then(requestSuccess)
+      .catch(requestFail);
   }
 
   function requestSuccess(response) {

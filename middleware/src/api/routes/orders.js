@@ -8,5 +8,14 @@ module.exports = function *() {
     this.throw(403);
   }
 
-  this.body = (yield discogs.getOrders(authToken)).orders;
+  const ordersResponse = yield discogs.getOrders(authToken);
+  this.body = ordersResponse.orders.map(order => {
+    return {
+      id: order.id,
+      from: order.buyer.username,
+      preview: order.items.length && order.items[0].release.description,
+      timestamp: order.last_activity,
+      avatar: 'https://pbs.twimg.com/profile_images/666037217832243200/TvOVC0ns.png'
+    };
+  });
 };

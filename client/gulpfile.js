@@ -10,7 +10,7 @@ const $ = require('gulp-load-plugins')({
   camelize: true
 });
 
-const JS_FILES = ['src/**/*.js'];
+const JS_FILES = ['src/**/*.js', '!src/**/*.test.js'];
 const CSS_FILES = ['src/**/*.scss', 'src/js/**/*.scss'];
 const INDEX = ['src/index.html'];
 const TARGET = '../dist';
