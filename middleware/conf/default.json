@@ -11,7 +11,7 @@
     },
     "api_url": "https://api.discogs.com/"
   },
-  "app_url": "http://localhost:3000/",
+  "app_url": "http://localhost:8080/",
   "oauth_callback_url": "http://localhost:8080/api/auth",
   "app_user_agent": "Discogs-Messenger/1.0"
 }
