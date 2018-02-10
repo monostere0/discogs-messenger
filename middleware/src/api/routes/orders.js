@@ -1,16 +1,16 @@
 const discogs = require('../lib/discogs');
 const secureRequest = require('../lib/oauth').secureRequest;
 
-module.exports = function *() {
-  const rawAuthToken = this.cookies.get('authToken');
+module.exports = async ctx => {
+  const rawAuthToken = ctx.cookies.get('authToken');
   const authToken = rawAuthToken && JSON.parse(rawAuthToken);
   if (!authToken) {
-    this.throw(403);
+    ctx.throw(403);
   }
 
-  const ordersResponse = yield discogs.getOrders(authToken);
-  this.body = yield ordersResponse.orders.map(function *(order) {
-    const { avatar_url: avatar } = yield discogs.getUserProfile(authToken, order.buyer.username);
+  const ordersResponse = await discogs.getOrders(authToken);
+  ctx.body = await ordersResponse.orders.map(async order => {
+    const { avatar_url: avatar } = await discogs.getUserProfile(authToken, order.buyer.username);
     return {
       id: order.id,
       from: order.buyer.username,

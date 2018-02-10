@@ -1,15 +1,16 @@
-const koa = require('koa');
-const app = koa();
+const Koa = require('koa');
+const app = new Koa();
 const serve = require('koa-static');
 const api = require('./src/api');
 
 app
   .use(api.routes())
-  .use(function *(next) {
+  .use(api.allowedMethods())
+  .use(async (ctx, next) => {
     const start = new Date;
-    yield next;
+    await next;
     const ms = new Date - start;
-    console.log(`${this.method} ${this.url} - ${ms}ms`);
+    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
   })
   .use(serve('dist'));
 

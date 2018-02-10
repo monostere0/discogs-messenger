@@ -1,6 +1,8 @@
-const router = require('koa-router')();
+const Router = require('koa-router');
 
-router.get('/api', require('./routes'));
+const router = new Router();
+
+router.get('/api', require('./routes/index'));
 router.get('/api/auth', require('./routes/auth'));
 router.get('/api/identity', require('./routes/identity'));
 router.get('/api/orders', require('./routes/orders'));
