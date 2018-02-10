@@ -1,7 +1,7 @@
 const discogs = require('../lib/discogs');
 
-module.exports = function *() {
-  const authToken = JSON.parse(this.cookies.get('authToken') || null);
+module.exports = async ctx => {
+  const authToken = JSON.parse(ctx.cookies.get('authToken') || null);
 
-  this.body = authToken ? (yield discogs.getIdentity(authToken)).username : '';
+  ctx.body = authToken ? (await discogs.getIdentity(authToken)).username : '';
 };

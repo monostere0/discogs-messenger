@@ -1,3 +1,3 @@
-module.exports = function *() {
-  this.body = 'API Entry point';
+module.exports = async ctx => {
+  ctx.body = 'API Entry point';
 };

@@ -1,15 +1,15 @@
 const discogs = require('../lib/discogs');
 const secureRequest = require('../lib/oauth').secureRequest;
 
-module.exports = function *() {
-  const rawAuthToken = this.cookies.get('authToken');
+module.exports = async ctx => {
+  const rawAuthToken = ctx.cookies.get('authToken');
   const authToken = rawAuthToken && JSON.parse(rawAuthToken);
   if (!authToken) {
-    this.throw(403);
+    ctx.throw(403);
   }
 
-  const currentUser = yield discogs.getIdentity(authToken);
-  const messagesResponse = yield discogs.getOrderMessages(authToken, this.params.orderId);
+  const currentUser = await discogs.getIdentity(authToken);
+  const messagesResponse = await discogs.getOrderMessages(authToken, ctx.params.orderId);
   const messagesList = messagesResponse.messages.map(message => {
     return {
       timestamp: message.timestamp,
@@ -20,5 +20,5 @@ module.exports = function *() {
       order: message.order
     };
   });
-  this.body = messagesList.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
+  ctx.body = messagesList.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
 };
