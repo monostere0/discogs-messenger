@@ -1,7 +1,7 @@
 import {
   getIdentity,
   getMessages,
-  getMessage,
+  getConversation,
 } from '../api';
 import fetch from '../fetch';
 
@@ -12,7 +12,7 @@ jest.mock('../fetch', () => ({
       json() {
         return Promise.resolve({ foo: 'bar' });
       }
-    })  
+    });
   }),
 }));
 
@@ -27,8 +27,8 @@ describe('src/api', () => {
     expect(fetch).toHaveBeenCalledWith('../api/messages');
     expect(response).toMatchSnapshot();
   });
-  it('getMessage(orderId)', async () => {
-    const response = await getMessage('44-112-2');
+  it('getConversation(orderId)', async () => {
+    const response = await getConversation('44-112-2');
     expect(fetch).toHaveBeenCalledWith('../api/messages/44-112-2');
     expect(response).toMatchSnapshot();
   });
