@@ -8,11 +8,13 @@ const styles = StyleSheet.create({
     flex: '1 0 0',
     minWidth: '200px',
     borderRight: `2px solid ${styleConstants.middleBarColor}`,
-    height: 'calc(100vh - 50px)',
+    height: '100vh',
 
     '@media screen and (max-width: 860px)': {
+      'overflow-y': 'scroll',
+      'overflow-x': 'hidden',
       width: '100%',
-      height: 'calc(30vh - 50px)',
+      height: '30vh',
       borderRight: 'none',
       borderBottom: `2px solid ${styleConstants.middleBarColor}`,
     },

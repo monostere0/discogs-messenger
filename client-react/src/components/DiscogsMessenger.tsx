@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     '@media screen and (max-width: 860px)': {
       'flexDirection': 'column',
+      'height': '100vh'
     },
   },
   conversations: {
