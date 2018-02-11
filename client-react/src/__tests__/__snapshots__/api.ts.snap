@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/api getIdentity() 1`] = `
+Object {
+  "foo": "bar",
+}
+`;
+
+exports[`src/api getMessage(orderId) 1`] = `
+Object {
+  "foo": "bar",
+}
+`;
+
+exports[`src/api getMessages() 1`] = `
+Object {
+  "foo": "bar",
+}
+`;

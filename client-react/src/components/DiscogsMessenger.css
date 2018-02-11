@@ -1,0 +1,19 @@
+.DiscogsMessenger {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row; 
+}
+
+@media screen and (max-width: 860px) {
+  .DiscogsMessenger {
+    flex-direction: column; 
+  }
+
+  .DiscogsMessenger__conversations {
+    width: 100%;
+  }
+}
+
+.DiscogsMessenger__conversations {
+  flex: 3 0 0;
+}
