@@ -1,3 +1,3 @@
 export interface StoreState {
-  messages: any[],
-};
+  messages: any[];
+}
