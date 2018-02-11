@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { getConversation } from '../api';
+import { Button, Input } from 'antd';
 import styleConstants from './styleConstants';
 
 const styles = StyleSheet.create({
   container: {
     minWidth: '200px',
-    height: 'calc(100vh - 50px)',
+    height: '100vh',
     position: 'relative',
 
     '@media screen and (max-width: 860px)': {
-      height: 'calc(70vh - 50px)',
+      height: '70vh',
     }
   },
   messages: {
@@ -60,9 +61,22 @@ export default class DiscogsConversation extends React.Component {
       <div className={css(styles.container)}>
         <ul className={css(styles.messages)}>
           {conversation.map((entry: any) => (
-            <li className={css(styles.message)} key={entry.timestamp}>{entry.message}</li>
+            <li
+              className={css(
+                styles.message,
+                entry.outbound && styles.messageOutbound
+              )}
+              key={entry.timestamp}>
+              {entry.message}
+            </li>
           ))}
         </ul>
+        <div className={css(styles.messageInputContainer)}>
+          <form>
+            <Input type="text" className={css(styles.messageInput)} />
+            <Button type="primary" className={css(styles.messageSend)}>Send</Button>
+          </form>
+        </div>
       </div>
     );
   }
