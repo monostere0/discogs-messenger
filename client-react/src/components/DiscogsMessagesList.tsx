@@ -1,6 +1,7 @@
 import * as React from 'react';
-import styleConstants from './styleConstants';
+import { NavLink } from 'react-router-dom';
 import { StyleSheet, css } from 'aphrodite/no-important';
+import styleConstants from './styleConstants';
 import { getMessages } from '../api';
 
 const styles = StyleSheet.create({
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
     ':hover': {
       backgroundColor: '#f8f8f8',
     },
+  },
+  messageActive: {
+    backgroundColor: '#f8f8f8'
   },
   avatar: {
     height: '50px',
@@ -74,15 +78,17 @@ export default class DiscogsMessagesList extends React.Component {
         {messages.length && <ul className={css(styles.list)}>
           {messages.map(message => (
             <li key={message.id} className={css(styles.message)}>
-              <img
-                className={css(styles.avatar)}
-                src={message.avatar}
-              />
-              <div className={css(styles.messageInfo)}>
-                <span className={css(styles.author)}>{message.from}</span>
-                <span>{message.preview}</span>
-              </div>
-              <span className={css(styles.receivedLabel)}>{message.received}</span>
+              <NavLink activeClassName={css(styles.messageActive)} to={`/messages/${message.id}`}>
+                <div>
+                  <img className={css(styles.avatar)}
+                    src={message.avatar} />
+                  <div className={css(styles.messageInfo)}>
+                    <span className={css(styles.author)}>{message.from}</span>
+                    <span>{message.preview}</span>
+                  </div>
+                  <span className={css(styles.receivedLabel)}>{message.received}</span>
+                </div>
+              </NavLink>
             </li>
           ))}
         </ul>}
@@ -92,7 +98,6 @@ export default class DiscogsMessagesList extends React.Component {
 
   async getMessages() {
     const messages = await getMessages();
-    console.log(messages);
     this.setState({ messages });
   }
 }

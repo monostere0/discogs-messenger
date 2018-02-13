@@ -1,19 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { getConversation } from '../api';
 import { Button, Input } from 'antd';
 import styleConstants from './styleConstants';
 
 const styles = StyleSheet.create({
-  container: {
-    minWidth: '200px',
-    height: '100vh',
-    position: 'relative',
-
-    '@media screen and (max-width: 860px)': {
-      height: '70vh',
-    }
-  },
   messages: {
     margin: 0,
     padding: '10px',
@@ -48,17 +38,15 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class DiscogsConversation extends React.Component {
-  state: { conversation: any[] } = { conversation: [] };
+type Props = { conversation: any[] };
 
-  componentDidMount() {
-    this.getConversation();
-  }
+export default class DiscogsConversation extends React.Component {
+  props: Props;
 
   render() {
-    const { conversation } = this.state;
+    const { conversation } = this.props;
     return (
-      <div className={css(styles.container)}>
+      <div>
         <ul className={css(styles.messages)}>
           {conversation.map((entry: any) => (
             <li
@@ -79,10 +67,5 @@ export default class DiscogsConversation extends React.Component {
         </div>
       </div>
     );
-  }
-
-  async getConversation() {
-    const conversation = await getConversation('22');
-    this.setState({ conversation });
   }
 }

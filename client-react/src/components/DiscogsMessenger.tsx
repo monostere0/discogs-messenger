@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { Route } from 'react-router-dom';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import DiscogsMessagesList from './DiscogsMessagesList';
-import DiscogsConversation from './DiscogsConversation';
+import DiscogsConversationLoader from './DiscogsConversationLoader';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,7 +27,10 @@ export default function DiscogsMessenger() {
     <div className={css(styles.container)}>
       <DiscogsMessagesList />
       <div className={css(styles.conversations)}>
-        <DiscogsConversation />
+        <Route
+          path="/messages/:conversationId"
+          exact={true}
+          component={DiscogsConversationLoader} />
       </div>
     </div>
   );
