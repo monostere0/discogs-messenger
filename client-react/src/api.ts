@@ -87,7 +87,7 @@ export async function getMessages(): Promise<any> {
 }
 
 export async function getConversation(orderId: string): Promise<any> {
-  return await Promise.resolve(conversation);
+  return await Promise.resolve(conversation.slice(0, parseInt(orderId, 10)));
   // return await fetchData(`messages/${orderId}`);
 }
 
