@@ -1,11 +1,15 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 
 import App from '../App';
 
-describe('src/App', () => {
+jest.mock('../RouteProvider', () => ({
+  default: 'ChildComponent'
+}));
+
+describe('components/App', () => {
   it('should render', () => {
-    const tree = renderer.create(<App />);
+    const tree = create(<App />);
     expect(tree).toMatchSnapshot();
   });
 });

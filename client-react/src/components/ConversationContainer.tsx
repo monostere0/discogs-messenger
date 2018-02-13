@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { getConversation } from '../api';
-import DiscogsConversation from './DiscogsConversation';
+import Conversation from './Conversation';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 type Props = { conversationId: string, match?: any };
 type State = { conversation: any[] };
 
-export default class DiscogsConversationLoader extends React.Component<Props, State> {
+export default class ConversationContainer extends React.Component<Props, State> {
   props: Props;
   state: State = { conversation: [] };
 
@@ -34,7 +34,7 @@ export default class DiscogsConversationLoader extends React.Component<Props, St
     const { conversation } = this.state;
     return (
       <div className={css(styles.container)}>
-        <DiscogsConversation conversation={conversation} />
+        <Conversation conversation={conversation} />
       </div>
     );
   }
