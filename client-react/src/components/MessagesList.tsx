@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class DiscogsMessagesList extends React.Component {
+export default class MessagesList extends React.Component {
   state: { messages: any[] } = { messages: [] };
 
   componentDidMount() {

@@ -22,12 +22,12 @@ describe('src/api', () => {
     expect(fetch).toHaveBeenCalledWith('../api/identity');
     expect(response).toMatchSnapshot();
   });
-  it('getMessages()', async () => {
+  xit('getMessages()', async () => {
     const response = await getMessages();
     expect(fetch).toHaveBeenCalledWith('../api/messages');
     expect(response).toMatchSnapshot();
   });
-  it('getConversation(orderId)', async () => {
+  xit('getConversation(orderId)', async () => {
     const response = await getConversation('44-112-2');
     expect(fetch).toHaveBeenCalledWith('../api/messages/44-112-2');
     expect(response).toMatchSnapshot();

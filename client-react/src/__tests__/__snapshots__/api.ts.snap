@@ -6,12 +6,6 @@ Object {
 }
 `;
 
-exports[`src/api getMessage(orderId) 1`] = `
-Object {
-  "foo": "bar",
-}
-`;
-
 exports[`src/api getMessages() 1`] = `
 Object {
   "foo": "bar",
