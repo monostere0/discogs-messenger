@@ -4,7 +4,7 @@ import { create } from 'react-test-renderer';
 import App from '../App';
 
 jest.mock('../RouteProvider', () => ({
-  default: 'ChildComponent'
+  default: 'RouteProvider'
 }));
 
 describe('components/App', () => {
