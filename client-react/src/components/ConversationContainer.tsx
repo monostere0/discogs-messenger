@@ -22,12 +22,14 @@ export default class ConversationContainer extends React.Component<Props, State>
   props: Props;
   state: State = { conversation: [] };
 
-  componentWillReceiveProps(props: Props, nextProps: Props) {
-    this.getConversation();
+  componentWillReceiveProps(nextProps: Props) {
+    const { conversationId } = nextProps.match.params;
+    this.getConversation(conversationId);
   }
 
   componentDidMount() {
-    this.getConversation();
+    const { conversationId } = this.props.match.params;
+    this.getConversation(conversationId);
   }
 
   render() {
@@ -39,8 +41,7 @@ export default class ConversationContainer extends React.Component<Props, State>
     );
   }
 
-  async getConversation() {
-    const { conversationId } = this.props.match.params;
+  async getConversation(conversationId: string) {
     const conversation = await getConversation(conversationId);
     this.setState({ conversation });
   }
