@@ -9,7 +9,7 @@ module.exports = async ctx => {
   }
 
   const ordersResponse = await discogs.getOrders(authToken);
-  ctx.body = await ordersResponse.orders.map(async order => {
+  ctx.body = await Promise.all(ordersResponse.orders.map(async order => {
     const { avatar_url: avatar } = await discogs.getUserProfile(authToken, order.buyer.username);
     return {
       id: order.id,
@@ -18,5 +18,5 @@ module.exports = async ctx => {
       timestamp: order.last_activity,
       avatar
     };
-  });
+  }));
 };
