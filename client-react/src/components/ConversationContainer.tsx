@@ -27,11 +27,6 @@ export default class ConversationContainer extends React.Component<Props, State>
     this.getConversation(conversationId);
   }
 
-  componentDidMount() {
-    const { conversationId } = this.props.match.params;
-    this.getConversation(conversationId);
-  }
-
   render() {
     const { conversation } = this.state;
     return (
@@ -43,6 +38,7 @@ export default class ConversationContainer extends React.Component<Props, State>
 
   async getConversation(conversationId: string) {
     const conversation = await getConversation(conversationId);
+    console.log(conversation);
     this.setState({ conversation });
   }
 }

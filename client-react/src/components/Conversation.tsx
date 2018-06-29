@@ -48,13 +48,13 @@ export default class DiscogsConversation extends React.Component {
     return (
       <div>
         <ul className={css(styles.messages)}>
-          {conversation.map((entry: any) => (
+          {conversation.map((entry: any, index) => (
             <li
               className={css(
                 styles.message,
                 entry.outbound && styles.messageOutbound
               )}
-              key={entry.timestamp}>
+              key={index}>
               {entry.message}
             </li>
           ))}

@@ -4,6 +4,7 @@ const serve = require('koa-static');
 const api = require('./src/api');
 
 app
+  .use(serve('dist'))
   .use(api.routes())
   .use(api.allowedMethods())
   .use(async (ctx, next) => {
@@ -12,6 +13,5 @@ app
     const ms = new Date - start;
     console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
   })
-  .use(serve('dist'));
 
 module.exports = app;
