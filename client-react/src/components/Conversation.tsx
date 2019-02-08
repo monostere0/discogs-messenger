@@ -17,10 +17,27 @@ const styles = StyleSheet.create({
     float: 'left',
     width: '80%'
   },
-  messageOutbound: {
+  avatar: {
+    height: '50px',
+    borderRadius: '50%',
+    opacity: 0.8,
+    marginLeft: '-10px',
+    verticalAlign: 'top',
+    transition: 'transform ease-out .2s',
+  },
+  inbound: {},
+  outbound: {
     backgroundColor: styleConstants.menuBackground,
     color: '#fff',
     float: 'right',
+  },
+  system: {
+    backgroundColor: 'transparent',
+    float: 'left',
+    color: styleConstants.middleBarColor,
+    width: '98%',
+    border: `dashed 1px ${styleConstants.middleBarColor}`,
+    textAlign: 'center',
   },
   messageInputContainer: {
     padding: '10px 20px',
@@ -35,6 +52,7 @@ const styles = StyleSheet.create({
   messageSend: {
     width: '120px',
     verticalAlign: 'bottom',
+    marginLeft: '10px',
   }
 });
 
@@ -52,9 +70,10 @@ export default class DiscogsConversation extends React.Component {
             <li
               className={css(
                 styles.message,
-                entry.outbound && styles.messageOutbound
+                styles[entry.type],
               )}
               key={index}>
+              {entry.type !== 'system' && <img className={css(styles.avatar)} src={entry.avatar} />}
               {entry.message}
             </li>
           ))}

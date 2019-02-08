@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     listStyle: 'none',
   },
   message: {
-    padding: '15px 20px',
     borderBottom: '1px solid #eee',
     position: 'relative',
     transition: 'background-color ease-in .2s',
@@ -34,8 +33,13 @@ const styles = StyleSheet.create({
       backgroundColor: '#f8f8f8',
     },
   },
-  messageActive: {
-    backgroundColor: '#f8f8f8'
+  messageLink: {
+    display: 'block',
+    padding: '15px 20px',
+    textDecoration: 'none !important',
+  },
+  messageLinkActive: {
+    backgroundColor: '#f8f8f8',
   },
   avatar: {
     height: '50px',
@@ -75,10 +79,13 @@ export default class MessagesList extends React.Component {
     const { messages } = this.state;
     return (
       <div className={css(styles.container)}>
-        {messages.length && <ul className={css(styles.list)}>
-          {messages.map(message => (
+        {Boolean(messages.length) && <ul className={css(styles.list)}>
+          {messages.map((message, index) => (
             <li key={message.id} className={css(styles.message)}>
-              <NavLink activeClassName={css(styles.messageActive)} to={`/messages/${message.id}`}>
+              <NavLink
+                className={css(styles.messageLink)}
+                activeClassName={css(styles.messageLinkActive)}
+                to={`/messages/${message.id}`}>
                 <div>
                   <img className={css(styles.avatar)}
                     src={message.avatar} />
