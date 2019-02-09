@@ -1,5 +1,5 @@
 {
-  "port":8080,
+  "port": 8080,
   "test_port": 8855,
   "discogs": {
     "oauth": {
@@ -9,7 +9,7 @@
       "authorize_url": "https://discogs.com/oauth/authorize?oauth_token=",
       "access_token_url": "https://api.discogs.com/oauth/access_token"
     },
-    "api_url": "https://api.discogs.com/"
+    "api_url": "https://api.discogs.com"
   },
   "app_url": "http://localhost:8080/",
   "oauth_callback_url": "http://localhost:8080/api/auth",
