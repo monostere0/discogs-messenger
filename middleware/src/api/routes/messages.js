@@ -4,8 +4,9 @@ const secureRequest = require('../lib/oauth').secureRequest;
 module.exports = async ctx => {
   const rawAuthToken = ctx.cookies.get('authToken');
   const authToken = rawAuthToken && JSON.parse(rawAuthToken);
+
   if (!authToken) {
-    ctx.throw(403);
+    return ctx.throw(403);
   }
 
   const { username: currentUser } = await discogs.getIdentity(authToken);
@@ -14,7 +15,11 @@ module.exports = async ctx => {
     let avatar = null;
     let messageType = null;
 
-    if (message.actor) {
+    if (message.from) {
+      avatar = message.from.avatar_url;
+    }
+
+    if (avatar === null && message.actor) {
       avatar = (await discogs.getUserProfile(authToken, message.actor.username)).avatar_url;
     }
 
