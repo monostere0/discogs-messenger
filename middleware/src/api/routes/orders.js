@@ -8,7 +8,9 @@ module.exports = async ctx => {
     ctx.throw(403);
   }
 
-  const ordersResponse = await discogs.getOrders(authToken);
+
+  const ordersResponse = await discogs.getOrders(authToken).catch(e => { });
+
   ctx.body = await Promise.all(ordersResponse.orders.map(async order => {
     const { avatar_url: avatar } = await discogs.getUserProfile(authToken, order.buyer.username);
     return {

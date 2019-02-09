@@ -1,9 +1,9 @@
 const app = require('../../../app');
 const request = require('supertest').agent(app.listen());
-const expect = require('chai').expect;
+const { expect } = require('chai');
 
-describe('Api entry point', () => {
-  it('should return entry point response', async () => {
+describe('/api', () => {
+  it('should return an entry point response', async () => {
     const response = await request.get('/api');
 
     expect(response.status).to.equal(200);

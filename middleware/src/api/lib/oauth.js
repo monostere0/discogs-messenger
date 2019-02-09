@@ -3,7 +3,7 @@ const conf = require('../../../conf')();
 const qs = require('querystring');
 const _ = require('lodash');
 
-module.exports = {initialize, authorize, accessToken, storeSecret, secureRequest};
+module.exports = { initialize, authorize, accessToken, storeSecret, secureRequest };
 
 var storedTokenSecret = null;
 
@@ -63,21 +63,21 @@ function getAppHeaders(oauthHeaders) {
 function getSecureHeaders(oAuthObject) {
   const date = new Date();
   return [`OAuth oauth_consumer_key="${conf.discogs.oauth.key}"`,
-    `oauth_nonce="${getNonce(date)}"`,
-    `oauth_signature="${percentEncode(`${conf.discogs.oauth.secret}&${oAuthObject.oauth_token_secret}`)}"`,
+  `oauth_nonce="${getNonce(date)}"`,
+  `oauth_signature="${percentEncode(`${conf.discogs.oauth.secret}&${oAuthObject.oauth_token_secret}`)}"`,
     'oauth_signature_method="PLAINTEXT"',
-    `oauth_timestamp="${date.getTime()}"`,
-    `oauth_token="${oAuthObject.oauth_token}"`].join(', ');
+  `oauth_timestamp="${date.getTime()}"`,
+  `oauth_token="${oAuthObject.oauth_token}"`].join(', ');
 }
 
 function getInitialHeaders() {
   const date = new Date();
   return [`OAuth oauth_consumer_key="${conf.discogs.oauth.key}"`,
-    `oauth_nonce="${getNonce(date)}"`,
-    `oauth_signature="${percentEncode(conf.discogs.oauth.secret)}&"`,
+  `oauth_nonce="${getNonce(date)}"`,
+  `oauth_signature="${percentEncode(conf.discogs.oauth.secret)}&"`,
     'oauth_signature_method="PLAINTEXT"',
-    `oauth_timestamp="${date.getTime()}"`,
-    `oauth_callback="${conf.oauth_callback_url}"`].join(', ');
+  `oauth_timestamp="${date.getTime()}"`,
+  `oauth_callback="${conf.oauth_callback_url}"`].join(', ');
 }
 
 function getAuthorizationHeaders(token, verifier) {
@@ -86,12 +86,12 @@ function getAuthorizationHeaders(token, verifier) {
   }
   const date = new Date();
   return [`OAuth oauth_consumer_key="${conf.discogs.oauth.key}"`,
-    `oauth_nonce="${getNonce(date)}"`,
-    `oauth_token=${token}`,
-    `oauth_signature="${percentEncode(`${conf.discogs.oauth.secret}&${storedTokenSecret}`)}"`,
+  `oauth_nonce="${getNonce(date)}"`,
+  `oauth_token=${token}`,
+  `oauth_signature="${percentEncode(`${conf.discogs.oauth.secret}&${storedTokenSecret}`)}"`,
     'oauth_signature_method="PLAINTEXT"',
-    `oauth_timestamp="${date.getTime()}"`,
-    `oauth_verifier="${verifier}"`].join(', ');
+  `oauth_timestamp="${date.getTime()}"`,
+  `oauth_verifier="${verifier}"`].join(', ');
 }
 
 function getNonce(date) {
