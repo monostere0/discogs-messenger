@@ -2,12 +2,7 @@ const discogs = require('../lib/discogs');
 const secureRequest = require('../lib/oauth').secureRequest;
 
 module.exports = async ctx => {
-  const rawAuthToken = ctx.cookies.get('authToken');
-  const authToken = rawAuthToken && JSON.parse(rawAuthToken);
-
-  if (!authToken) {
-    return ctx.throw(403);
-  }
+  const { authToken } = ctx;
 
   const { username: currentUser } = await discogs.getIdentity(authToken);
   const messagesResponse = await discogs.getOrderMessages(authToken, ctx.params.orderId);

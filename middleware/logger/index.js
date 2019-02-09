@@ -1,10 +1,19 @@
-const winston = require('winston');
+const bunyan = require('bunyan');
+const LogzioBunyanStream = require('logzio-bunyan');
 
-module.exports = new winston.Logger({
-  transports: [
-    new winston.transports.Console({
-      handleExceptions: true,
-      json: true
-    })],
-  exitOnError: false
+const conf = require('../conf')();
+const packageJson = require('../package.json');
+
+const loggerOptions = {
+  token: conf.logzio_token,
+};
+
+module.exports = bunyan.createLogger({
+  name: packageJson.name,
+  streams: [
+    {
+      type: 'raw',
+      stream: new LogzioBunyanStream(loggerOptions),
+    },
+  ],
 });
