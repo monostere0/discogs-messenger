@@ -27,4 +27,6 @@ describe('/api/identity', () => {
     expect(response.status).to.equal(200);
     expect(response.body).to.deep.equal({ username: 'example' });
   });
+
+  after(() => nock.cleanAll());
 });

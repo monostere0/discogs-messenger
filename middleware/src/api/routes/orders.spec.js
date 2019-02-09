@@ -35,4 +35,6 @@ describe('/api/orders', () => {
       avatar: 'http://www.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0?s=52&r=pg&d=mm'
     }]);
   });
+
+  after(() => nock.cleanAll());
 });

@@ -47,4 +47,6 @@ describe('/api/messages/', () => {
         expect(response.body[0]).to.haveOwnProperty(propName);
       });
   });
+
+  after(() => nock.cleanAll());
 });
