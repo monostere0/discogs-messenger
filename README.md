@@ -2,7 +2,7 @@
 
 ### An easy to use messenger for your Discogs chats and orders.
 
-It consists of two separate packages, the [client](./client-react) and the [middleware](./middleware).
+It consists of two separate packages, the [client](./client) and the [middleware API](./api).
 More information is available in each package.
 
 You basically need to start each of them using `yarn start` or `npm start` in each of them.

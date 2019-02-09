@@ -1,4 +1,4 @@
-# Middleware for discogs-messenger
+# Middleware API for discogs-messenger
 
 ### Tech-stack
 

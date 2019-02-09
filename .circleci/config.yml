@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.1.2
-    working_directory: ~/discogs-messenger/middleware
+    working_directory: ~/discogs-messenger/api
     steps:
       - checkout:
           path: ~/discogs-messenger
