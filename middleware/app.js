@@ -1,17 +1,15 @@
 const Koa = require('koa');
 const app = new Koa();
 const serve = require('koa-static');
+const koaBunyanLogger = require('koa-bunyan-logger');
+
 const api = require('./src/api');
+const logger = require('./logger');
 
 app
+  .use(koaBunyanLogger(logger))
   .use(serve('dist'))
   .use(api.routes())
-  .use(api.allowedMethods())
-  .use(async (ctx, next) => {
-    const start = new Date;
-    await next;
-    const ms = new Date - start;
-    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-  })
+  .use(api.allowedMethods());
 
 module.exports = app;

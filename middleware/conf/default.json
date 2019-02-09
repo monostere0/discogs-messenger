@@ -1,5 +1,5 @@
 {
-  "port":8080,
+  "port": 8080,
   "test_port": 8855,
   "discogs": {
     "oauth": {
@@ -11,6 +11,7 @@
     },
     "api_url": "https://api.discogs.com/"
   },
+  "logzio_token": "gmDVNSNiSXBBLBhewwVDjlbSsyMqtDBH",
   "app_url": "http://localhost:8080/",
   "oauth_callback_url": "http://localhost:8080/api/auth",
   "app_user_agent": "Discogs-Messenger/1.0"
