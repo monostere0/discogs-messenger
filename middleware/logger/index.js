@@ -5,7 +5,7 @@ const conf = require('../conf')();
 const packageJson = require('../package.json');
 
 const loggerOptions = {
-  token: conf.logzio_token,
+  token: process.env.LOGZIO_ACCESS_TOKEN,
 };
 
 module.exports = bunyan.createLogger({

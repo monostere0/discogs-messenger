@@ -62,20 +62,20 @@ function getAppHeaders(oauthHeaders) {
 
 function getSecureHeaders(oAuthObject) {
   const date = new Date();
-  return [`OAuth oauth_consumer_key="${conf.discogs.oauth.key}"`,
+  return [`OAuth oauth_consumer_key="${process.env.DISCOGS_OAUTH_KEY}"`,
   `oauth_nonce="${getNonce(date)}"`,
-  `oauth_signature="${percentEncode(`${conf.discogs.oauth.secret}&${oAuthObject.oauth_token_secret}`)}"`,
-    'oauth_signature_method="PLAINTEXT"',
+  `oauth_signature="${percentEncode(`${process.env.DISCOGS_OAUTH_SECRET}&${oAuthObject.oauth_token_secret}`)}"`,
+  'oauth_signature_method="PLAINTEXT"',
   `oauth_timestamp="${date.getTime()}"`,
   `oauth_token="${oAuthObject.oauth_token}"`].join(', ');
 }
 
 function getInitialHeaders() {
   const date = new Date();
-  return [`OAuth oauth_consumer_key="${conf.discogs.oauth.key}"`,
+  return [`OAuth oauth_consumer_key="${process.env.DISCOGS_OAUTH_KEY}"`,
   `oauth_nonce="${getNonce(date)}"`,
-  `oauth_signature="${percentEncode(conf.discogs.oauth.secret)}&"`,
-    'oauth_signature_method="PLAINTEXT"',
+  `oauth_signature="${percentEncode(process.env.DISCOGS_OAUTH_SECRET)}&"`,
+  'oauth_signature_method="PLAINTEXT"',
   `oauth_timestamp="${date.getTime()}"`,
   `oauth_callback="${conf.oauth_callback_url}"`].join(', ');
 }
@@ -85,11 +85,11 @@ function getAuthorizationHeaders(token, verifier) {
     throw new Error('Token secret is null. Call initialize() before authorize().');
   }
   const date = new Date();
-  return [`OAuth oauth_consumer_key="${conf.discogs.oauth.key}"`,
+  return [`OAuth oauth_consumer_key="${process.env.DISCOGS_OAUTH_KEY}"`,
   `oauth_nonce="${getNonce(date)}"`,
   `oauth_token=${token}`,
-  `oauth_signature="${percentEncode(`${conf.discogs.oauth.secret}&${storedTokenSecret}`)}"`,
-    'oauth_signature_method="PLAINTEXT"',
+  `oauth_signature="${percentEncode(`${process.env.DISCOGS_OAUTH_SECRET}&${storedTokenSecret}`)}"`,
+  'oauth_signature_method="PLAINTEXT"',
   `oauth_timestamp="${date.getTime()}"`,
   `oauth_verifier="${verifier}"`].join(', ');
 }
