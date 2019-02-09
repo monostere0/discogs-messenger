@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.1.2
+    working_directory: ~/discogs-messenger/middleware
+    steps:
+      - checkout:
+          path: ~/discogs-messenger
+      - run: npm i
+      - run: npm test
