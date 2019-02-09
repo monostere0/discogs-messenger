@@ -1,11 +1,12 @@
 const Router = require('koa-router');
 
-const router = new Router();
+const authMiddleware = require('./middlewares/auth');
+const router = new Router({ prefix: '/api' });
 
-router.get('/api', require('./routes/index'));
-router.get('/api/auth', require('./routes/auth'));
-router.get('/api/identity', require('./routes/identity'));
-router.get('/api/orders', require('./routes/orders'));
-router.get('/api/messages/:orderId', require('./routes/messages'));
+router.get('/', require('./routes/index'));
+router.get('/auth', require('./routes/auth'));
+router.get('/identity', require('./routes/identity'));
+router.get('/orders', authMiddleware, require('./routes/orders'));
+router.get('/messages/:orderId', authMiddleware, require('./routes/messages'));
 
 module.exports = router;
