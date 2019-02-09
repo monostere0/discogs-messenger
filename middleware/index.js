@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const conf = require('./conf')();
 const app = require('./app');
 
