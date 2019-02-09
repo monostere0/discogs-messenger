@@ -8,7 +8,6 @@ const request = require('supertest').agent(app.listen());
 describe('/api/auth', () => {
   before(() => {
     nock('https://api.discogs.com/')
-      .log(console.log)
       .get('/oauth/request_token')
       .reply(200, "oauth_token=abc123&oauth_token_secret=xyz789")
       .post('/oauth/access_token')
