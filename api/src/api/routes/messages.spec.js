@@ -21,7 +21,7 @@ describe('/api/messages/', () => {
   });
 
   it('should return 404 if param orderId is missing', async () => {
-    const response = await request.get(`/api/messages`);
+    const response = await request.get('/api/messages');
 
     expect(response.status).to.equal(404);
   });
@@ -44,8 +44,8 @@ describe('/api/messages/', () => {
       'type',
       'order',
       'avatar'].forEach(propName => {
-        expect(response.body[0]).to.haveOwnProperty(propName);
-      });
+      expect(response.body[0]).to.haveOwnProperty(propName);
+    });
   });
 
   after(() => nock.cleanAll());

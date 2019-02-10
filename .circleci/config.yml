@@ -8,4 +8,5 @@ jobs:
       - checkout:
           path: ~/discogs-messenger
       - run: npm i
+      - run: npm run lint
       - run: npm test
