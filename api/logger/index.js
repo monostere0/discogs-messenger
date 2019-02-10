@@ -1,7 +1,6 @@
 const bunyan = require('bunyan');
 const LogzioBunyanStream = require('logzio-bunyan');
 
-const conf = require('../conf')();
 const packageJson = require('../package.json');
 
 const loggerOptions = {

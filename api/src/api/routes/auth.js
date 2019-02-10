@@ -8,7 +8,7 @@ module.exports = async ctx => {
   } = ctx.request.query;
 
   if (authVerifier && authToken) {
-    await oauth.authorize(authToken, authVerifier).catch(e => {
+    await oauth.authorize(authToken, authVerifier).catch(() => {
       ctx.throw(400, '', { message: 'Call initialize before authorize.' });
     });
     const authIdentifier = await oauth.accessToken(authToken, authVerifier);

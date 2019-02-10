@@ -1,10 +1,9 @@
 const discogs = require('../lib/discogs');
-const secureRequest = require('../lib/oauth').secureRequest;
 
 module.exports = async ctx => {
   const { authToken } = ctx;
 
-  const ordersResponse = await discogs.getOrders(authToken).catch(e => { });
+  const ordersResponse = await discogs.getOrders(authToken).catch(() => { });
 
   ctx.body = await Promise.all(ordersResponse.orders.map(async order => {
     const { avatar_url: avatar } = await discogs.getUserProfile(authToken, order.buyer.username);

@@ -1,6 +1,5 @@
 const secureRequest = require('./oauth').secureRequest;
 const conf = require('../../../conf')();
-const qs = require('querystring');
 
 module.exports = {
   getOrders,

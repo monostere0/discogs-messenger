@@ -1,5 +1,4 @@
 const discogs = require('../lib/discogs');
-const secureRequest = require('../lib/oauth').secureRequest;
 
 module.exports = async ctx => {
   const { authToken } = ctx;
