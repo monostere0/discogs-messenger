@@ -3,8 +3,12 @@
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "mocha": true
+        "mocha": true,
+        "jest": true
     },
+    "plugins": [
+        "jest"
+    ],
     "globals": {
         "console": "readable",
         "process": "readable"
@@ -33,6 +37,11 @@
         "eol-last": [
             "error",
             "always"
-        ]
+        ],
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error"
     }
 }

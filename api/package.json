@@ -7,7 +7,8 @@
     "node": ">= 8.1.2"
   },
   "scripts": {
-    "test": "mocha --reporter=spec --no-colors ./src/**/*.spec.js --exit",
+    "test:integration": "mocha --reporter=spec --no-colors ./src/**/*.spec.js --exit",
+    "test": "jest --verbose",
     "lint": "eslint .",
     "server": "nodemon --es_staging ./index.js",
     "start": "npm run server"
@@ -30,6 +31,8 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^5.13.0",
+    "eslint-plugin-jest": "^22.3.0",
+    "jest": "^24.1.0",
     "merge2": "^1.2.3",
     "mocha": "^5.2.0",
     "mock-require": "^3.0.3",
@@ -38,5 +41,14 @@
     "supertest": "^3.4.2",
     "supertest-koa-agent": "^0.3.2",
     "yargs": "^4.6.0"
+  },
+  "jest": {
+    "globals": {
+      "jest": true
+    },
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)"
+    ]
   }
 }
