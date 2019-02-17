@@ -4,6 +4,7 @@ const authMiddleware = require('./middlewares/auth');
 const router = new Router({ prefix: '/api' });
 
 router.get('/', require('./routes/index'));
+router.get('/healthcheck', require('./routes/healthcheck'));
 router.get('/auth', require('./routes/auth'));
 router.get('/identity', require('./routes/identity'));
 router.get('/orders', authMiddleware, require('./routes/orders'));

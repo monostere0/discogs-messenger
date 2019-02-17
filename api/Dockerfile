@@ -28,8 +28,8 @@ COPY --chown=node:node --from=base /home/node/app .
 ARG GIT_COMMIT
 ENV GIT_COMMIT=$GIT_COMMIT
 
-#HEALTHCHECK --interval=1m --timeout=5s --start-period=1m \
-#    CMD curl -f http://localhost:8090/healthcheck || exit 1
+HEALTHCHECK --interval=1m --timeout=5s --start-period=1m \
+   CMD curl -f http://localhost:8080/api/healthcheck || exit 1
 
 EXPOSE 8080
 
