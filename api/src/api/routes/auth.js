@@ -12,7 +12,7 @@ module.exports = async ctx => {
       ctx.throw(400, '', { message: 'Call initialize before authorize.' });
     });
     const authIdentifier = await oauth.accessToken(authToken, authVerifier);
-    ctx.cookies.set('authToken', JSON.stringify(authIdentifier));
+    ctx.cookies.set('authToken', JSON.stringify(authIdentifier), { secure: true });
     ctx.response.redirect(conf.app_url);
   } else {
     const oauthResponse = await oauth.initialize();
