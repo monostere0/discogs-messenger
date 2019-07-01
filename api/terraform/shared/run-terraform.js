@@ -7,7 +7,7 @@ require('dotenv').config({
 });
 
 const terraformArg = process.argv[2] || '-help';
-const processStream = spawn('terraform', [terraformArg], {
+const processStream = spawn('terraform', [terraformArg, '-auto-approve'], {
   cwd: __dirname
 });
 
