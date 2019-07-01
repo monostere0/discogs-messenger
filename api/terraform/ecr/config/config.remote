@@ -1,0 +1,3 @@
+region = "eu-central-1"
+bucket = "discmsgr-terraform-env"
+key    = "shared/ecr.tfstate"
