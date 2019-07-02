@@ -1,4 +1,4 @@
-# Middleware API for discogs-messenger
+# Node / Koa API for discogs-messenger
 
 ## Tech-stack
 
