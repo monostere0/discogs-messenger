@@ -24,7 +24,7 @@
     "koa-bunyan-logger": "^2.1.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "logzio-bunyan": "^1.0.1",
     "nodemon": "^1.18.10",
     "request-promise": "^2.0.1"
