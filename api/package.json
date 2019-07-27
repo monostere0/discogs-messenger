@@ -22,6 +22,7 @@
     "dotenv": "^6.2.0",
     "koa": "^2.7.0",
     "koa-bunyan-logger": "^2.1.0",
+    "koa-helmet": "^4.2.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.3",
     "lodash": "^4.17.13",
