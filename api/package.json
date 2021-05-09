@@ -25,7 +25,7 @@
     "koa-helmet": "^4.2.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.3",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "logzio-bunyan": "^1.0.1",
     "nodemon": "^1.18.10",
     "request-promise": "^2.0.1"
